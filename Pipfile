@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 app = {editable = true, path = "."}
+fastai = "*"
 
 [dev-packages]
 pytest = "*"

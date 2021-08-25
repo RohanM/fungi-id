@@ -10,6 +10,7 @@ app = {editable = true, path = "."}
 [dev-packages]
 pytest = "*"
 bs4 = "*"
+pytest-watch = "*"
 
 [requires]
 python_version = "3.8"

@@ -28,7 +28,11 @@ Run tests:
 
 ```
 pipenv shell
-pytest -v
+pytest
+
+# or
+
+ptw # pytest-watch
 ```
 
 

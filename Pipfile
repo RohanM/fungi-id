@@ -6,9 +6,13 @@ name = "pypi"
 [packages]
 flask = "*"
 app = {editable = true, path = "."}
+fastai = "*"
 
 [dev-packages]
 pytest = "*"
+bs4 = "*"
+pytest-watch = "*"
+pytest-flask = "*"
 
 [requires]
 python_version = "3.8"

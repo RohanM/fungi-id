@@ -9,3 +9,6 @@ def index(client):
 
 def test_title(index):
     assert index.select('h1')[0].string == 'Australian Fungi ID'
+
+def test_upload_present(index):
+    assert len(index.select('form')) == 1

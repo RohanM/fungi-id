@@ -1,6 +1,11 @@
+import pytest
 from bs4 import BeautifulSoup
 
-def test_index(client):
+@pytest.fixture
+def index(client):
     rv = client.get('/')
-    soup = BeautifulSoup(rv.data, 'html.parser')
-    assert soup.select('h1')[0].string == 'Hello, world!'
+    return BeautifulSoup(rv.data, 'html.parser')
+
+
+def test_title(index):
+    assert index.select('h1')[0].string == 'Australian Fungi ID'

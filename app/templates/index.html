@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Australian Fungi ID</h1>
 
-  <form method="post" action="/identification" enctype="multipart/form-data">
+  <form method="post" action="{{url_for('identification.create')}}" enctype="multipart/form-data">
     <input type="file" name="photo" /><br />
     <input type="submit" value="Identify" />
   </form>

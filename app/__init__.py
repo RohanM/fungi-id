@@ -9,4 +9,7 @@ def create_app(test_config=None):
     from . import index
     app.register_blueprint(index.bp)
 
+    from . import identification
+    app.register_blueprint(identification.bp)
+
     return app

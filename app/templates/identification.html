@@ -3,5 +3,9 @@
 {% block content %}
   <h1>Australian Fungi ID</h1>
 
-  Scientific name: {{ scientific_name }}
+  <div id="top-predictions">
+    {% for prediction in predictions %}
+      <div class="prediction">{{ prediction.scientific_name }} ({{ prediction.confidence }}%)</div>
+    {% endfor %}
+  </div>
 {% endblock %}

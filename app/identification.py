@@ -9,15 +9,31 @@ bp = Blueprint('identification', __name__)
 @bp.route("/identification", methods=['POST'])
 def create():
     photo = request.files['photo']
-    scientific_name = predict(photo.stream)
-    return render_template('identification.html', scientific_name=scientific_name)
+    predictions = predict(photo.stream)
+    return render_template('identification.html', predictions=predictions)
 
 
 def predict(photo):
     learner = load_learner('models/model.pkl')
     image = PILImage.create(photo)
-    result = learner.predict(image)
-    return format_scientific_name(result[0])
+
+    _, _, outputs = learner.predict(image)
+    predictions = get_top_predictions(5, outputs, learner.dls.vocab)
+
+    return predictions
+
+def get_top_predictions(num_predictions, outputs, vocab):
+    top_classes = outputs.topk(num_predictions)
+
+    return [
+        {
+            'scientific_name': format_scientific_name(
+                vocab[top_classes.indices[i]],
+            ),
+            'confidence': round(top_classes.values[i].item()*100)
+        } for i in range(num_predictions)
+    ]
+
 
 def format_scientific_name(scientific_name):
     return scientific_name.replace('_', ' ').capitalize()

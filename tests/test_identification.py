@@ -14,4 +14,4 @@ def test_identification(app, client):
         follow_redirects=True,
         content_type='multipart/form-data'
     )
-    assert b'Aminita muscaria' in response.data
+    assert b'Amanita muscaria' in response.data

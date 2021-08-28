@@ -16,3 +16,8 @@ pytest-flask = "*"
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+server = "bash -c 'FLASK_APP=app FLASK_ENV=development flask run'"
+test = "pytest"
+test-watch = "ptw"

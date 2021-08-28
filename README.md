@@ -20,19 +20,15 @@ pipenv install
 Run the development server:
 
 ```
-pipenv shell
-FLASK_APP=app flask run
+pipenv run server
 ```
 
 Run tests:
 
 ```
-pipenv shell
-pytest
-
+pipenv run test
 # or
-
-ptw # pytest-watch
+pipenv run test-watch
 ```
 
 

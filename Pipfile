@@ -19,5 +19,9 @@ python_version = "3.8"
 
 [scripts]
 server = "bash -c 'FLASK_APP=app FLASK_ENV=development flask run'"
+
 test = "pytest"
 test-watch = "ptw"
+
+assets-dev = "npx tailwindcss -o app/static/tailwind.css"
+assets-prod = "bash -c 'NODE_ENV=production npx tailwindcss -o app/static/tailwind.css --minify'"

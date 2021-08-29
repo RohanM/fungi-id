@@ -17,6 +17,14 @@ Install dependencies:
 pipenv install
 ```
 
+Build assets:
+
+```
+pipenv run assets-dev
+# or
+pipenv run assets-prod
+```
+
 Run the development server:
 
 ```

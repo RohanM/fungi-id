@@ -1,10 +1,21 @@
 {% extends "layout.html" %}
 {% block title %}Australian Fungi ID{% endblock %}
 {% block content %}
-  <h1>Australian Fungi ID</h1>
+  <h2 class="text-xl font-bold">Identify a Fungi</h2>
+
+  <p>Take a photo of the fungi in question and we'll take a guess at what you're looking at:</p>
 
   <form method="post" action="{{url_for('identification.create')}}" enctype="multipart/form-data">
-    <input type="file" name="photo" /><br />
-    <input type="submit" value="Identify" />
+
+    <div class="flex flex-col md:flex-row my-4 gap-2 max-w-md">
+      <label class="flex-auto border-2 border-dotted border-gray-600 px-2 py-1 text-center">
+        <span>Select a file</span>
+        <input type="file" name="photo" class="hidden"/><br />
+      </label>
+
+      <input type="submit" value="Identify" class="flex-auto bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-white" />
+    </div>
   </form>
+
+  <em>We're only taking a guess. Many mushrooms are toxic and will kill you if you eat them. Don't!</em>
 {% endblock %}

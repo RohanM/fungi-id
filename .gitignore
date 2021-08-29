@@ -1,4 +1,5 @@
 data/**/*
+app/static/tailwind.css
 
 .ipynb_checkpoints/
 

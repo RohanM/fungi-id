@@ -25,8 +25,13 @@ def test_species(page):
     assert page.select('li p')[4].text == 'Chlorophyllum brunneum (0%)'
 
 def test_photos(page):
-    assert len(page.select('li')[0].select('img')) == 2
-    assert len(page.select('li')[1].select('img')) == 2
-    assert len(page.select('li')[2].select('img')) == 2
-    assert len(page.select('li')[3].select('img')) == 2
-    assert len(page.select('li')[4].select('img')) == 2
+    for i in range(5):
+        photos = page.select('li')[i].select('img')
+        assert len(photos) == 2
+        check_photo(photos[0])
+        check_photo(photos[1])
+
+
+def check_photo(photo):
+    assert photo['src'][:8] == 'https://'
+    assert photo.parent()[1].text.strip()[:8] == 'Photo by'

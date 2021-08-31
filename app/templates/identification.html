@@ -10,8 +10,13 @@
       <li class="mb-6">
         <p class="text-xl"><span class="font-bold">{{ prediction.scientific_name }}</span> ({{ prediction.confidence }}%)</p>
         <div class="flex gap-4">
-          {% for photo_url in prediction.photos %}
-            <img class="flex-initial min-w-0" src="{{ photo_url }}" />
+          {% for photo in prediction.photos %}
+            <figure class="flex-initial min-w-0">
+              <img src="{{ photo['image_url'] }}" />
+              <figcaption>
+                Photo by <a class="underline" href="https://www.inaturalist.org/people/{{ photo['user_login'] }}">{{ photo['user_login'] }}</a>
+              </figcaption>
+            </figure>
           {% endfor %}
         </div>
       </li>

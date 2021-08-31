@@ -13,7 +13,10 @@ class Photos:
                 scientific_name = row['scientific_name'].lower()
                 if scientific_name not in self.photos:
                     self.photos[scientific_name] = []
-                self.photos[scientific_name].append(row['image_url'])
+                self.photos[scientific_name].append({
+                    'image_url': row['image_url'],
+                    'user_login': row['user_login'],
+                })
 
     def get_photos(self, scientific_name, num_photos=2):
         return sample(self.photos[scientific_name], num_photos)

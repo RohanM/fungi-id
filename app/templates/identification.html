@@ -1,11 +1,20 @@
 {% extends "layout.html" %}
 {% block title %}Australian Fungi ID{% endblock %}
 {% block content %}
-  <h1>Australian Fungi ID</h1>
+  <p class="text-lg">We guess that might be...</p>
 
-  <div id="top-predictions">
+  <p class="text-sm mb-2"><em>We're only taking a guess. Many mushrooms are toxic and will kill you if you eat them. Don't!</em></p>
+
+  <ol>
     {% for prediction in predictions %}
-      <div class="prediction">{{ prediction.scientific_name }} ({{ prediction.confidence }}%)</div>
+      <li class="mb-6">
+        <p class="text-xl"><span class="font-bold">{{ prediction.scientific_name }}</span> ({{ prediction.confidence }}%)</p>
+        <div class="flex gap-4">
+          {% for photo_url in prediction.photos %}
+            <img class="flex-initial min-w-0" src="{{ photo_url }}" />
+          {% endfor %}
+        </div>
+      </li>
     {% endfor %}
-  </div>
+  </ol>
 {% endblock %}
